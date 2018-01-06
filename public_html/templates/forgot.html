@@ -1,0 +1,32 @@
+<div id="forgot-modal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+					aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Enter your ABQ Town Hall account email to recover your account</h4>
+			</div>
+
+			<div class="modal-body">
+
+				<!-- actual form -->
+				<form #forgotForm="ngForm" name="forgotForm" (ngSubmit)="createForgot();">
+
+					<!--abq town hall email -->
+					<div class="form-group">
+						<input id="profileEmail" type="email" class="form-control" name="profileEmail" placeholder="E-Mail"
+								 required [(ngModel)]="forgot.profileEmail" #profileEmail="ngModel">
+					</div>
+
+					<!-- Submit button -->
+					<div class="row">
+						<button type="submit" id="submit" name="forgot" class="btn btn-success">Recover</button>
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Remembered?</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

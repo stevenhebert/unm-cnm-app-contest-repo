@@ -1,0 +1,20 @@
+<div class="form-container">
+	<h4>Login:</h4>
+	<form #signInForm="ngForm" id="signInForm" name="signInForm" (submit)="signIn();">
+		<div class="input-group">
+			<span class="input-group-addon"></span>
+			<input id="profileEmail" type="email" class="form-control" name="profileEmail" placeholder="E-Mail" required
+					 [(ngModel)]="signin.profileEmail" #profileEmail="ngModel">
+		</div>
+		<div class="input-group">
+			<span class="input-group-addon"></span>
+			<input id="profilePassword" type="password" class="form-control" name="profilePassword" placeholder="Password" required
+					 [(ngModel)]="signin.profilePassword" #profilePassword="ngModel">
+		</div>
+		<div class="row">
+			<button type="submit" id="submit" class="btn btn-success">Sign In</button>
+			<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#forgot-modal">Forgot?</button>
+			<button type="button" class="btn btn-primary pull-right" routerLink="/signup"><i class="fa fa-user"></i> Sign Up</button>
+		</div>
+	</form>
+</div>

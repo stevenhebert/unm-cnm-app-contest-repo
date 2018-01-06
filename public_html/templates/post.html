@@ -1,0 +1,110 @@
+<div class="sfooter">
+	<div class="sfooter-content">
+		<div class="container">
+			<user-nav></user-nav>
+
+
+			<div class="jumbotron">
+				<h2 class="display-3">Welcome to city council district {{ posts[0]?.postDistrictId }}</h2>
+
+				<p class="lead">Information about your district is contained in the map below</p>
+				<hr class="my-4">
+				<leaflet></leaflet>
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<h3>Create a new post </h3>
+
+					<!-- Create a new post -->
+					<form #postForm="ngForm" id="postForm" (submit)="createPost(); postForm.reset();">
+
+						<div class="form-group">
+							<label class="sr-only" for="postContent">Content <span class="text-danger">*</span></label>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-pencil" aria-hidden="true"></i>
+								</div>
+								<textarea class="form-control" name="postContent" id="postContent" cols="30" rows="10"
+											 placeholder="1024 characters max." [(ngModel)]="newPost.postContent"
+											 #postContent="ngModel"></textarea>
+							</div>
+						</div>
+
+						<button [disabled]="postForm.invalid" class="btn btn-success" type="submit">Post</button>
+						<button class="btn btn-warning" type="reset">Reset</button>
+					</form>
+					<div *ngIf="status !== null" class="alert alert-dismissible" [ngClass]="status.type" role="alert">
+						<button type="button" class="close" aria-label="Close" (click)="status = null;"><span
+							aria-hidden="true">&times;</span>
+						</button>
+						{{ status.message }}
+					</div>
+				</div>
+
+				<div class="col-md-8">
+
+					<div class="test">
+
+						<h3>District {{ posts[0]?.postDistrictId }} posts</h3>
+
+						<!-- Sorting by -->
+						<!--<div class="dropdown pull-right">-->
+							<!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu"-->
+									  <!--data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">sort-->
+							<!--</button>-->
+							<!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu">-->
+								<!--<li (click)="sortPost('votes')">votes</li>-->
+								<!--<li (click)="sortPost('date')">date</li>-->
+							<!--</ul>-->
+						<!--</div>-->
+					</div>
+
+					<!-- Thread of posts -->
+					<div *ngFor="let post of posts | orderBy:postDateTime:true;">
+
+						<div class="panel panel-default" *ngIf="this.post.postParentId == null">
+
+							<div class="panel-heading">
+								by {{ post.postProfileUserName }}
+							</div>
+
+							<div class="panel-body">
+
+									<div class="well btn-group-vertical pull-left">
+										<div class="col-xs-2">
+											<button type="button" (click)="createVote(this.post.postId, 1);"><span
+												class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>{{ post.info.upVote
+												}}
+											</button>
+											<button type="button" (click)="createVote(this.post.postId, -1);"><span
+												class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>{{
+												post.info.downVote }}
+											</button>
+										</div>
+									</div>
+
+									<div class="col-xs-6">
+										{{ post.postContent }}
+									</div>
+							</div>
+
+							<div class="panel panel-footer">
+								<em>{{ post.postDateTime | date:"mediumDate" }} at {{ post.postDateTime | date:"shortTime"
+									}}</em>
+								<button class="pull-right" (click)="switchPost(post)">Reply</button>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<app-footer></app-footer>
+</div>

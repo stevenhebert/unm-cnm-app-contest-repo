@@ -1,0 +1,125 @@
+<div class="sfooter">
+	<div class="sfooter-content">
+		<main-nav></main-nav>
+		<main class="signup">
+
+			<div class="container-fluid">
+
+				<h1>Create a New ABQ Town Hall Account</h1>
+
+				<form class="form-horizontal" #signupForm="ngForm" name="signupForm" (ngSubmit)="createSignUp();">
+
+					<!-- abq town hall first name -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileFirstName" name="profileFirstName" class="form-control input-sm"
+									 required placeholder="First Name" [(ngModel)]="signUp.profileFirstName"
+									 #profileFirstName="ngModel">
+						</div>
+					</div>
+
+					<!-- abq town hall last name-->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileLastName" name="profileLastName" class="form-control input-sm"
+									 required placeholder="Last Name" [(ngModel)]="signUp.profileLastName"
+									 #profileLastName="ngModel">
+						</div>
+					</div>
+
+					<!-- abq town hall address 1 -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileAddress1" name="profileAdress1" class="form-control input-sm"
+									 required placeholder="Street Address" [(ngModel)]="signUp.profileAddress1"
+									 #profileAddress1="ngModel">
+						</div>
+					</div>
+
+					<!-- abq town hall address 2 -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileAddress2" name="profileAddress2" class="form-control input-sm"
+									 placeholder="Unit Number" [(ngModel)]="signUp.profileAddress2" #profileAddress2="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall city -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileCity" name="profileCity" class="form-control input-sm"
+									 required placeholder="City" [(ngModel)]="signUp.profileCity" #profileCity="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall state -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileState" name="profileState" class="form-control input-sm"
+									 required placeholder="State Abbreviation" [(ngModel)]="signUp.profileState"
+									 #profileState="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall zip -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileZip" name="profileZip" class="form-control input-sm"
+									 required placeholder="Zipcode" [(ngModel)]="signUp.profileZip" #profileZip="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall email -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileEmail" name="profileEmail" class="form-control input-sm"
+									 required placeholder="Email Address" [(ngModel)]="signUp.profileEmail"
+									 #profileEmail="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall username -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="text" id="profileUserName" name="profileUserName" class="form-control input-sm"
+									 required placeholder="Username" [(ngModel)]="signUp.profileUserName"
+									 #profileUserName="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall password -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" id="profilePassword" name="profilePassword" class="form-control input-sm"
+									 required placeholder="Password" [(ngModel)]="signUp.profilePassword"
+									 #profilePassword="ngModel">
+						</div>
+					</div>
+
+					<!--abq town hall password confirm -->
+					<div class="form-group">
+						<div class="col-sm-10">
+							<input type="password" id="profilePasswordConfirm" name="profilePasswordConfirm"
+									 class="form-control input-sm" required placeholder="Confirm Password"
+									 [(ngModel)]="signUp.profilePasswordConfirm" #profilePasswordConfirm="ngModel">
+						</div>
+					</div>
+
+					<!-- Submit button -->
+					<button type="submit" id="submit" name="signup" class="btn btn-success">Sign Up</button>
+					<button routerLink="" type="button" class="btn btn-warning">Cancel</button>
+				</form>
+
+				<div *ngIf="status !== null" class="alert alert-dismissible" [ngClass]="status.type" role="alert">
+					<button type="button" class="close" aria-label="Close" (click)="status = null;"><span
+						aria-hidden="true">&times;</span>
+					</button>
+					{{ status.message }}
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+	<app-footer></app-footer>
+</div>
