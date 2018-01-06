@@ -1,0 +1,12 @@
+.DS_Store
+/.sync-config.cson
+/.idea
+/node_modules
+/src/**/*.js
+/src/**/*.js.map
+/vendor
+/public_html/dist
+/public_html/index.html
+/npm-debug.log
+package-lock.json
+/webpack/target.js
